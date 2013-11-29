@@ -1,5 +1,8 @@
-bare-func (Data Structure and Algorithms Utilities)
-=================================================
+bare-func 
+=========
+
+(Data Structure and Algorithms Utilities)
+-----------------------------------------
 
 This library provides fundamental data structures and utilities 
 in implementing your own software algorithms.

@@ -1,13 +1,15 @@
 /**
  * Primitive Data Structure for Algorithms in Javascript
+ * I wouldn't recommend using this library for production used. 
+ * But Rather this will benefit if you trying to design your algorithms in a sandbox.
  *
  * Accessor: methods that does not modify the data and used for accesing the data
  * Mutator: methods that modify the data (side effect)
  * Generic: methods that could be useful for the certain use cases.
  */
 
-(function(){
-    /////////////////////////////////
+define(function(){
+/////////////////////////////////
     // Ordered Pair Data Structure //
     /////////////////////////////////
 
@@ -74,7 +76,16 @@
      */
     function append(lst, item){
         return extend(lst, list(item));
+        if (is_empty_list(tail(lst))){
+            return pair()
+        } else {
+            return pair()
+        }
     }
+    var x = list(1,2);
+    var y = append(x, 3);
+    console.log(y);
+
 
     /**
      * Combine list such that it returns [First List + second List]
@@ -89,11 +100,25 @@
     }
 
     function insert(lst, index, item){
-        // TODO
+        function iter(n, remaining){
+            if (n === index){
+                return pair(item, remaining);
+            } else {
+                return pair(head(remaining), iter(n+1, tail(remaining)));
+            }
+        }
+        return iter(0, lst);
     }
 
     function length(lst){
-        // TODO
+        function iter(n, remaining){
+            if (is_empty_list(remaining)){
+                return n;
+            } else {
+                return iter(n+1, tail(remaining));
+            }
+        }
+        return iter(0, lst);
     }
 
     /**
@@ -195,5 +220,4 @@
             }
         }
     }
-
-}).call(this);
+});
